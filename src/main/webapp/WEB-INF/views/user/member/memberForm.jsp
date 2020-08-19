@@ -71,6 +71,31 @@ td {
 			}
 		});
 	};
+	
+	function checksms() {
+		var mem_hp = $('select[name=mem_hp1]').val() + '-'
+				+ $('input[name=mem_hp2]').val() + '-'
+				+ $('input[name=mem_hp3]').val();
+		$('input[name=mem_hp]').val(mem_hp);
+		
+		$.ajax({
+			type : 'POST',
+			url : '${pageContext.request.contextPath}/sms/checkSms.do',
+			dataType : 'JSON',
+			data : {
+				mem_hp : $('input[name=mem_hp]').val(),
+				hp_num : $('input[name=hp_num]').val()
+			},
+			error : function(result) {
+				alert(result.status);
+			},
+			success : function(result) {
+				//{ flag : true | false}
+
+				alert(result.flag);
+			}
+		});
+	};
 
 	function sendemail() {
 		$.ajax({
@@ -162,7 +187,10 @@ td {
 						<option value="019">019</option>
 				</select> - <input type="text" name="mem_hp2" size="4" value="" /> - 
 				<input	type="text" name="mem_hp3" size="4" value="" />
-				<a href="javascript:sendsms();">[인증번호 전송]</a></td>
+				<a href="javascript:sendsms();">[인증번호 전송]</a><br>
+				<input type="text" name="hp_num"/>
+				<a href="javascript:checksms();">[인증번호 확인]</a>
+				</td>
 			</tr>
 			<tr>
 				<td class="tLine" colspan="2"></td>
