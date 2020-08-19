@@ -67,7 +67,7 @@ public class KnowledgeController {
 		
 		andView.addObject("knowledgeList", knowledgeList);
 		andView.addObject("publicKeyMap", publicKeyMap);
-		andView.setViewName("user/quiz/knowledgeList");
+		andView.setViewName("admin/knowledge/knowledgeList");
 		andView.addObject("pagination",pagination.getPagingHtmls());
 		
 		return andView;
