@@ -18,7 +18,7 @@
     	
     	<sql id="selectAll">
     			SELECT *
-    			FROM KNOWLEDGE
+    			FROM KNOWLEDGE 
     	</sql>
     	
     	<select id="knowledgeInfo" parameterClass="map" resultMap="knowledgeResultMap">
