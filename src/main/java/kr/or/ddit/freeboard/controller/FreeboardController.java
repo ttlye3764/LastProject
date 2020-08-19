@@ -28,6 +28,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+// 이용춘 - 깃 커밋 테스트
+
+
 @Controller
 @RequestMapping("/user/freeboard/")
 public class FreeboardController {
