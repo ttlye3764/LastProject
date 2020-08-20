@@ -100,7 +100,7 @@ $(function(){
 								
 								<div class="custom-control custom-radio" style="padding: 10px">
 									<input type="radio" id="customRadio1" name="radioname" value="k_answer1" 
-									<c:if test="${knowledgeInfo.k_answer1 eq 'k_answer1'}">checked</c:if>
+									<c:if test="${knowledgeInfo.k_answer eq 'k_answer1'}">checked</c:if>
 									class="custom-control-input">
 									<label class="custom-control-label" for="customRadio1"><span>01</span>
 									${knowledgeInfo.k_answer1 }
@@ -109,7 +109,7 @@ $(function(){
 								
 								<div class="custom-control custom-radio" style="padding: 10px">
 									<input type="radio" id="customRadio2" name="radioname" value="k_answer2" 
-									<c:if test="${knowledgeInfo.k_answer2 eq 'k_answer2'}">checked</c:if>
+									<c:if test="${knowledgeInfo.k_answer eq 'k_answer2'}">checked</c:if>
 									class="custom-control-input">
 									<label class="custom-control-label" for="customRadio2"><span>02</span> 
 									${knowledgeInfo.k_answer2 }
@@ -117,7 +117,7 @@ $(function(){
 								</div>
 								<div class="custom-control custom-radio" style="padding: 10px">
 									<input type="radio" id="customRadio3" name="radioname" value="k_answer3" 
-									<c:if test="${knowledgeInfo.k_answer3 eq 'k_answer3'}">checked</c:if>
+									<c:if test="${knowledgeInfo.k_answer eq 'k_answer3'}">checked</c:if>
 									class="custom-control-input">
 									<label class="custom-control-label" for="customRadio3"><span>03</span> 
 									${knowledgeInfo.k_answer3 }
@@ -125,7 +125,7 @@ $(function(){
 								</div>
 								<div class="custom-control custom-radio" style="padding: 10px">
 									<input type="radio" id="customRadio4" name="radioname" value="k_answer4" 
-									<c:if test="${knowledgeInfo.k_answer4 eq 'k_answer4'}">checked</c:if>
+									<c:if test="${knowledgeInfo.k_answer eq 'k_answer4'}">checked</c:if>
 									class="custom-control-input">
 									<label class="custom-control-label" for="customRadio4"><span>04</span> 
 									${knowledgeInfo.k_answer4 }

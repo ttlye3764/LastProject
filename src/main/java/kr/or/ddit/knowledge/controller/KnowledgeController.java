@@ -27,7 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/admin/knowledge/")
+@RequestMapping("/admin/knowledge/") 
 public class KnowledgeController {
 	@Autowired
 	private CryptoGenerator cryptoGen;
