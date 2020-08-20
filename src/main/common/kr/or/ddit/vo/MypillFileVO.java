@@ -2,25 +2,27 @@ package kr.or.ddit.vo;
 
 
 
-public class FileItemVO  {
+public class MypillFileVO  {
 	private String file_no;
-	private String file_bd_no;
+	private String file_pill_no;
 	private String file_name;
 	private String file_save_name;
 	private String file_type;
 	private String file_size;
+	
+	public String getFile_pill_no() {
+		return file_pill_no;
+	}
+	public void setFile_pill_no(String file_pill_no) {
+		this.file_pill_no = file_pill_no;
+	}
 	public String getFile_no() {
 		return file_no;
 	}
 	public void setFile_no(String file_no) {
 		this.file_no = file_no;
 	}
-	public String getFile_bd_no() {
-		return file_bd_no;
-	}
-	public void setFile_bd_no(String file_bd_no) {
-		this.file_bd_no = file_bd_no;
-	}
+	
 	public String getFile_name() {
 		return file_name;
 	}
