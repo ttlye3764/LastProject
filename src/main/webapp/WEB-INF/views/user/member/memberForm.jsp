@@ -305,12 +305,8 @@ td {
 							return true;
 						});
 
-		$('#btn3')
-				.click(
-						function() {
-							$(location)
-									.attr('href',
-											'${pageContext.request.contextPath}/user/member/memberList.do');
+		$('#btn3').click(function() {
+							$(location).attr('href','${pageContext.request.contextPath}/user/member/memberList.do');
 						});
 	});
 </script>

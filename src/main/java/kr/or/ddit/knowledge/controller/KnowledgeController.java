@@ -103,9 +103,9 @@ public class KnowledgeController {
 	
 	// 문제 등록
 	@RequestMapping("insertKnowledgeInfo")
-	public String insertKnowledge(KnowledgeVO knowledgeInfo,
-								  @RequestParam("files") MultipartFile[] items)throws Exception{
-		this.knowledgeService.insertKnowledge(knowledgeInfo, items);
+	public String insertKnowledge(KnowledgeVO knowledgeInfo)throws Exception{
+		this.knowledgeService.insertKnowledge(knowledgeInfo);
+		
 		return "redirect:/admin/knowledge/knowledgeList.do";
 	}
 	

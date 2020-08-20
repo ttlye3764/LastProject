@@ -19,40 +19,13 @@
 
 <script type="text/javascript">
 $(function(){
-	$('form[name=knowledgeForm]').on('submit', function(){	
-	    var k_answer = $('input[name="k_answer"]:checked').val();
-//		$(location).attr('href','${pageContext.request.contextPath}/admin/knowledge/insertKnowledgeInfo.do');
-		
-		 $(this).attr('action','${pageContext.request.contextPath}/admin/knowledge/insertKnowledgeInfo.do?k_answer=' + k_answer);
-	        
-	        return true;
-	});
-
-	$('#cancelBtn').click(function(){	
-		$(location).attr('href','${pageContext.request.contextPath}/admin/knowledge/knowledgeList.do');
+	$('#regBtn').click(function(){	
+		$(location).attr('href','${pageContext.request.contextPath}/admin/knowledge/knowledgeForm.do');
 		
 	});
 
 });
- function setThumbnail(event) { 
-		var reader = new FileReader(); 
-		reader.onload = function(event) { 
-			var img = document.createElement("img"); 
-			
-			img.setAttribute("src", event.target.result); 
-			document.querySelector("div#image_container").appendChild(img); 
-			
-			img.style.height = '300px';
-		    img.style.width = '300px';
-			}; 
-			reader.readAsDataURL(event.target.files[0]);
 
-			document.querySelector("div#image_container").addEventListener('click', function() {
-			//document.querySelector("div#image_container").style.display = 'none';
-			document.querySelector("div#image_container").remove();
-			});
-		};
-		
 	
 </script>
 </head>
@@ -97,74 +70,97 @@ $(function(){
 			<!-- 문제 -->
 			<div class="row no-gutters">
 				<div class="timeline-top"></div>
+				
 				<div class="col-md py-2">
-					<div class="card">
+					<c:if test="${empty knowledgeList }">
+					
+					<div class="card" style="width: 800px; margin-left: 150px">
 						<div class="card-body">
-							<form name="knowledgeForm" class="form-horizontal" role="form"
-								action="" method="post" enctype="multipart/form-data">
-								<h4 class="mb-2">
-									<input type="text" size="30px" id="k_title" name="k_title">
-								</h4>
+							<h4 class="mb-2" style="text-align: center;">등록된 게시글이 존재하지 않습니다!!!</h4>
+						</div>
+					</div>
+					</c:if>
+					
+				<c:if test="${!empty knowledgeList }">
+					<c:forEach items="${knowledgeList }" var="knowledgeInfo">
+					<div class="card" style="width: 800px; margin-left: 150px">
+						<div class="card-body">
+							<h4 class="mb-2">
+							<input type="hidden" value="${knowledgeInfo.k_no}"/>
+							${knowledgeInfo.rnum }. ${knowledgeInfo.k_title }</h4>
 							<div class="form-group">
-								<textarea class="form-control" rows="5" placeholder="내용을 입력하세요." id="k_content" name="k_content"></textarea>
+								${knowledgeInfo.k_content }
 							</div>
 							
-							<div id="image_container"></div>
+							<%-- <div id="image_container">
+								<img src="/files/${knowledgeInfo.k_img }" alt="pic1" width="250"/>
+							</div> --%>
 
 							<div class="list-group-number list-unstyled list-group-borderless">
 								
 								<div class="custom-control custom-radio" style="padding: 10px">
-									<input type="radio" id="customRadio1" name="k_answer" value="k_answer1" class="custom-control-input">
+									<input type="radio" id="customRadio1" name="radioname" value="k_answer1" 
+									<c:if test="${knowledgeInfo.k_answer1 eq 'k_answer1'}">checked</c:if>
+									class="custom-control-input">
 									<label class="custom-control-label" for="customRadio1"><span>01</span>
-									<input type="text" size="30px" id="k_answer1" name="k_answer1">
+									${knowledgeInfo.k_answer1 }
 									</label>
 								</div>
 								
 								<div class="custom-control custom-radio" style="padding: 10px">
-									<input type="radio" id="customRadio2" name="k_answer" value="k_answer2" class="custom-control-input">
+									<input type="radio" id="customRadio2" name="radioname" value="k_answer2" 
+									<c:if test="${knowledgeInfo.k_answer2 eq 'k_answer2'}">checked</c:if>
+									class="custom-control-input">
 									<label class="custom-control-label" for="customRadio2"><span>02</span> 
-									<input type="text" size="30px" id="k_answer2" name="k_answer2">
+									${knowledgeInfo.k_answer2 }
 									</label>
 								</div>
 								<div class="custom-control custom-radio" style="padding: 10px">
-									<input type="radio" id="customRadio3" name="k_answer" value="k_answer3" class="custom-control-input">
+									<input type="radio" id="customRadio3" name="radioname" value="k_answer3" 
+									<c:if test="${knowledgeInfo.k_answer3 eq 'k_answer3'}">checked</c:if>
+									class="custom-control-input">
 									<label class="custom-control-label" for="customRadio3"><span>03</span> 
-									<input type="text" size="30px" id="k_answer3" name="k_answer3">
+									${knowledgeInfo.k_answer3 }
 									</label>
 								</div>
 								<div class="custom-control custom-radio" style="padding: 10px">
-									<input type="radio" id="customRadio4" name="k_answer" value="k_answer4" class="custom-control-input">
+									<input type="radio" id="customRadio4" name="radioname" value="k_answer4" 
+									<c:if test="${knowledgeInfo.k_answer4 eq 'k_answer4'}">checked</c:if>
+									class="custom-control-input">
 									<label class="custom-control-label" for="customRadio4"><span>04</span> 
-									<input type="text" size="30px" id="k_answer4" name="k_answer4">
+									${knowledgeInfo.k_answer4 }
 									</label>
 								</div>
-								
 							</div>
-								<!-- <form name="img">
-									<div class="form-group">
-										<label for="exampleFormControlFile1"></label>
-										<input type="file" class="form-control-file" name="files"
-										  id="exampleFormControlFile1" onchange="setThumbnail(event);" multiple="multiple"/>
-									</div>
-								</form> -->
+						<button type="button" class="btn btn-danger" value="삭제" style="float: right; margin-left: 10px; width: 80px">삭제</button>
+						<button type="button" class="btn btn-primary" value="수정" style="float: right; width: 80px">수정</button>
 						</div>
+						
+						
+						
 					</div>
+					</c:forEach>
+					</c:if>
 				</div>
+				
 			</div>
-			</div>
-			</section>
+				<div style="margin-left: 550px">
+				${pagination }
+				</div>
+		</div>
+	</section>
+			
 			
 			<!-- 버튼 -->
 			<section class="py-5">
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-8 text-center mx-auto">
-							<button type="submit" class="btn btn-primary" value="등록" id="regBtn">등록</button>
-							<button type="button" class="btn btn-light" value="취소" id="cancelBtn">취소</button>
+							<button type="button" class="btn btn-primary" value="등록" id="regBtn" style="width: 80px; margin-right: 10px;">등록</button>
+							<button type="button" class="btn btn-light" value="취소" id="cancelBtn" style="width: 80px">취소</button>
 						</div>
 					</div>
 				</div>
-			</form>
 			</section>
 			
 			
