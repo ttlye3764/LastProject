@@ -62,12 +62,11 @@ td {
 				mem_hp : $('input[name=mem_hp]').val()
 			},
 			error : function(result) {
-				alert(result.status);
+				alert(result.responseText);
 			},
 			success : function(result) {
 				//{ flag : true | false}
-
-				alert(result.flag);
+				alert(result.responseText);
 			}
 		});
 	};
@@ -87,12 +86,11 @@ td {
 				hp_num : $('input[name=hp_num]').val()
 			},
 			error : function(result) {
-				alert(result.status);
+				alert(result.responseText);
 			},
 			success : function(result) {
 				//{ flag : true | false}
-
-				alert(result.flag);
+				alert(result.responseText);
 			}
 		});
 	};
