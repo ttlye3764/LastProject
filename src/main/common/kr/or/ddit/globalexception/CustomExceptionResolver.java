@@ -17,10 +17,10 @@ public class CustomExceptionResolver extends SimpleMappingExceptionResolver {
 									     HttpServletResponse response, 
 									     Object handler, 
 									     Exception ex) {
-		// 클라이언트 서버 대상 요청시 서버 내 경량화된 쓰레드 생성(응답 전송시 GC)
+		// �겢�씪�씠�뼵�듃 �꽌踰� ���긽 �슂泥��떆 �꽌踰� �궡 寃쎈웾�솕�맂 �벐�젅�뱶 �깮�꽦(�쓳�떟 �쟾�넚�떆 GC)
 		String currentThread = Thread.currentThread().getName();
 		
-		// 익셉션 발생 메서드와 해당 메서드를 포함하는 클래스명 추출
+		// �씡�뀎�뀡 諛쒖깮 硫붿꽌�뱶�� �빐�떦 硫붿꽌�뱶瑜� �룷�븿�븯�뒗 �겢�옒�뒪紐� 異붿텧
 		HandlerMethod handlerMethod = (HandlerMethod)handler;
 		String exceptionOccuredClazz = handlerMethod.getBean().getClass().getName();
 		String exceptionOccuredMethod = handlerMethod.getMethod().getName();
@@ -28,12 +28,12 @@ public class CustomExceptionResolver extends SimpleMappingExceptionResolver {
 		String exceptionType = ex.getClass().getName();
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY/MM/DD kk:mm:ss");
-		System.out.println("에러발생 : " + currentThread + 
-							" | 클래스 : " + exceptionOccuredClazz +
-							" | 메서드 : " + exceptionOccuredMethod +
-							" | 라인 : " + lineNumber +
-							" | 익셉션 타입 : " + exceptionType +
-							" | 발생시간 : " + dateFormat.format(new Date()));
+		System.out.println("�뿉�윭諛쒖깮 : " + currentThread + 
+							" | �겢�옒�뒪 : " + exceptionOccuredClazz +
+							" | 硫붿꽌�뱶 : " + exceptionOccuredMethod +
+							" | �씪�씤 : " + lineNumber +
+							" | �씡�뀎�뀡 ���엯 : " + exceptionType +
+							" | 諛쒖깮�떆媛� : " + dateFormat.format(new Date()));
 		
 		
 		return super.resolveException(request, response, handler, ex);
