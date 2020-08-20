@@ -1,6 +1,7 @@
 package kr.or.ddit.message.controller;
 
 
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @class ExampleSend
@@ -48,23 +51,23 @@ public class MessageController {
 		
 		System.out.println(result);
 		
-//		if (result.get("status") == true) {
-//
-//            // 메시지 보내기 성공 및 전송결과 출력
-//            System.out.println("성공");
-//            System.out.println(result.get("group_id")); // 그룹아이디
-//            System.out.println(result.get("result_code")); // 결과코드
-//            System.out.println(result.get("result_message")); // 결과 메시지
-//            System.out.println(result.get("success_count")); // 메시지아이디
-//            System.out.println(result.get("error_count")); // 여러개 보낼시 오류난 메시지 수
-//          } else {
-//
-//            // 메시지 보내기 실패
-//            System.out.println("실패");
-//            System.out.println(result.get("code")); // REST API 에러코드
-//            System.out.println(result.get("message")); // 에러메시지
-//          }
-		return "success";
+		if ((boolean)result.get("status") == true) {
+            // 메시지 보내기 성공 및 전송결과 출력
+            System.out.println("성공");
+            System.out.println(result.get("group_id")); // 그룹아이디
+            System.out.println(result.get("result_code")); // 결과코드
+            System.out.println(result.get("result_message")); // 결과 메시지
+            System.out.println(result.get("success_count")); // 메시지아이디
+            System.out.println(result.get("error_count")); // 여러개 보낼시 오류난 메시지 수
+            return "인증번호가 전송되었습니다.";
+          } else {
+
+            // 메시지 보내기 실패
+            System.out.println("실패");
+            System.out.println(result.get("code")); // REST API 에러코드
+            System.out.println(result.get("message")); // 에러메시지
+            return "인증번호 전송에 실패하였습니다.";
+          }
 	}
 	
 	public String rand(String phone) {
@@ -77,22 +80,21 @@ public class MessageController {
 		return random;
 	}
 	
+	@ResponseBody
 	@RequestMapping(value = "checkSms")
-	public String checkNum(HttpServletRequest request) {
+	public String checkNum(HttpServletRequest request) throws Exception {
 		String phone = (String) request.getParameter("mem_hp");
 		String num = (String) request.getParameter("hp_num");
 		
 		if(inNum.get(phone)==null) {
-			return "false";
+			return "인증번호가 일치하지 않습니다.";
 		}
 		
 		if(inNum.get(phone).equals(num)) {
-			System.out.println("인증번호가 일치합니다.");
 			inNum.remove(phone);
-			return "success";
+			return "인증이 완료되었습니다.";
 		}else {
-			System.out.println("인증번호가 일치하지 않습니다.");
-			return "false";
+			return "인증번호가 일치하지 않습니다.";
 		}
 	}
 }
