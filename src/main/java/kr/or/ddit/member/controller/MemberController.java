@@ -1,17 +1,10 @@
 package kr.or.ddit.member.controller;
 
-import java.net.URLEncoder;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-
-import kr.or.ddit.member.service.IMemberService;
-import kr.or.ddit.vo.MemberVO;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ExtendedModelMap;
@@ -21,9 +14,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import kr.or.ddit.member.service.IMemberService;
+import kr.or.ddit.vo.MemberVO;
 
 
 // /SpringToddler/user/member/memberList.do
@@ -139,7 +134,5 @@ public class MemberController {
 		  andView.setViewName("jsonConvertView");
 		  
 		  return andView;
-		  
-		  
 	  }
 }
