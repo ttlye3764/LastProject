@@ -49,7 +49,7 @@ public class IKnowledgeDAOImpl implements IKnowledgeDAO {
 
 
 	@Override
-	public void deleteKnowledge(Map<String, String> params) throws Exception {
-		client.delete("knowledge.deleteknowledge", params);
+	public void deleteKnowledge(String k_no) throws Exception {
+		client.delete("knowledge.deleteKnowledge", k_no);
 	}
 }

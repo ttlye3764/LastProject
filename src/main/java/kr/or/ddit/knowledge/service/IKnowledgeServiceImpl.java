@@ -66,8 +66,8 @@ public class IKnowledgeServiceImpl implements IKnowledgeService {
 
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
 	@Override
-	public void deleteKnowledge(Map<String, String> params) throws Exception {
-		knowledgeDAO.deleteKnowledge(params);
+	public void deleteKnowledge(String k_no) throws Exception {
+		knowledgeDAO.deleteKnowledge(k_no);
 
 	}
 

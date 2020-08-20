@@ -21,7 +21,7 @@ public interface IKnowledgeService {
 		public KnowledgeVO knowledgeInfo(Map<String, String> params) throws Exception;
 		
 		// 문제 삭제
-		public void deleteKnowledge(Map<String, String> params) throws Exception;
+		public void deleteKnowledge(String k_no) throws Exception;
 		
 		// 페이지
 		public String totalCount(Map<String, String> params) throws Exception;

@@ -110,12 +110,11 @@ public class KnowledgeController {
 	}
 	
 	// 문제 삭제
-	@RequestMapping("deleteKnowledgeInfo/{k_no}")
-	public String deleteKnowledge(@PathVariable("k_no") String k_no,
-								Map<String, String> params) throws Exception{
+	@RequestMapping("deleteKnowledgeInfo")
+	public String deleteKnowledge(String k_no) throws Exception{
 		
-		params.put("k_no", k_no);
-		this.knowledgeService.deleteKnowledge(params);
+		System.out.println(k_no);
+		this.knowledgeService.deleteKnowledge(k_no);
 		
 		return "redirect:/admin/knowledge/knowledgeList.do";
 	}
