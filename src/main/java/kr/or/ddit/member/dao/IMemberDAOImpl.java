@@ -16,7 +16,7 @@ import kr.or.ddit.vo.MemberVO;
 public class IMemberDAOImpl implements IMemberDAO {
 	//@Resource
 	//@Inject
-	@Autowired
+	//@Autowired
 	private SqlMapClient client;
 	
 		

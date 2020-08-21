@@ -10,21 +10,21 @@
 				 Trigger - 스케줄링(CronExcpression 활용)
 				 job - 선언된 스케줄링에 따라 실행되어야하는 비지니스 로직을 포함하는 클래스
 	 -->
-	 <bean id="timeCheckJob" class="org.springframework.scheduling.quartz.JobDetailBean"
-	      p:jobClass="kr.or.ddit.quartz.job.TimeCheckJob">
-	 </bean>
+<!-- 	 <bean id="timeCheckJob" class="org.springframework.scheduling.quartz.JobDetailBean" -->
+<!-- 	      p:jobClass="kr.or.ddit.quartz.job.TimeCheckJob"> -->
+<!-- 	 </bean> -->
 	 
-	 <bean id="timeCheckTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"
-	 	 p:jobDetail-ref="timeCheckJob"
-	 	 p:cronExpression="0/5 * * * * ?">
-	 </bean>
+<!-- 	 <bean id="timeCheckTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean" -->
+<!-- 	 	 p:jobDetail-ref="timeCheckJob" -->
+<!-- 	 	 p:cronExpression="0/5 * * * * ?"> -->
+<!-- 	 </bean> -->
 	
-	 <bean id="schedulerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-	 	<property name="triggers">
-	 		<list>
-	 			<ref bean="timeCheckTrigger"/>
-	 		</list>
-	 	</property>
-	 	<property name="autoStartup" value="false"></property> 
-	 </bean>
+<!-- 	 <bean id="schedulerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean"> -->
+<!-- 	 	<property name="triggers"> -->
+<!-- 	 		<list> -->
+<!-- 	 			<ref bean="timeCheckTrigger"/> -->
+<!-- 	 		</list> -->
+<!-- 	 	</property> -->
+<!-- 	 	<property name="autoStartup" value="false"></property>  -->
+<!-- 	 </bean> -->
 </beans>

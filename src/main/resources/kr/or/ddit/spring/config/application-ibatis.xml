@@ -63,20 +63,30 @@
 		 		pulbic void setDataReS
 		  -->
 		 
-		 <bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean"
-		 	p:dataSource-ref="dataSource"
-		 	p:configLocation="classpath:kr/or/ddit/ibatis/config/SqlMapConfig.xml"
-		 	p:useTransactionAwareDataSource="true"
-		 	p:transactionConfigClass="com.ibatis.sqlmap.engine.transaction.external.ExternalTransactionConfig">
-		 	<property name="transactionConfigProperties">
-		 		<props>
-		 			<prop key="DefaultAutoCommit">false</prop>
-		 			<prop key="SetAutoCommitAllowed">true</prop>
-		 		</props>
-		 	</property>
-		 </bean>
+<!-- 		 <bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean" -->
+<!-- 		 	p:dataSource-ref="dataSource" -->
+<!-- 		 	p:configLocation="classpath:kr/or/ddit/ibatis/config/SqlMapConfig.xml" -->
+<!-- 		 	p:useTransactionAwareDataSource="true" -->
+<!-- 		 	p:transactionConfigClass="com.ibatis.sqlmap.engine.transaction.external.ExternalTransactionConfig"> -->
+<!-- 		 	<property name="transactionConfigProperties"> -->
+<!-- 		 		<props> -->
+<!-- 		 			<prop key="DefaultAutoCommit">false</prop> -->
+<!-- 		 			<prop key="SetAutoCommitAllowed">true</prop> -->
+<!-- 		 		</props> -->
+<!-- 		 	</property> -->
+<!-- 		 </bean> -->
 		 
 		 <bean id="transactionMGR" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
 		 	p:dataSource-ref="dataSource">
 		 	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:kr/or/ddit/mybatis/sql-map-config.xml"/>
+		<!-- <property name="mapperLocations" value="kr/or/ddit/mybatis/mappers/*.xml"/> -->
+	</bean>
+	
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 </beans>

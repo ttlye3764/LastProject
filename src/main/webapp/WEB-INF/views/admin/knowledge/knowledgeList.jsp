@@ -19,10 +19,22 @@
 
 <script type="text/javascript">
 $(function(){
+	// 등록
 	$('#regBtn').click(function(){	
 		$(location).attr('href','${pageContext.request.contextPath}/admin/knowledge/knowledgeForm.do');
 		
 	});
+
+	// 삭제
+	$('#deleteBtn').click(function(){	
+		var k_no = document.getElementById("K_no").value;
+		alert(k_no);
+		
+		$(location).attr('href','${pageContext.request.contextPath}/admin/knowledge/deleteKnowledgeInfo.do?k_no=' + k_no);
+		
+	});
+
+	
 
 });
 
@@ -86,7 +98,7 @@ $(function(){
 					<div class="card" style="width: 800px; margin-left: 150px">
 						<div class="card-body">
 							<h4 class="mb-2">
-							<input type="hidden" value="${knowledgeInfo.k_no}"/>
+							<input type="hidden" value="${knowledgeInfo.k_no}" id="K_no"/>
 							${knowledgeInfo.rnum }. ${knowledgeInfo.k_title }</h4>
 							<div class="form-group">
 								${knowledgeInfo.k_content }
@@ -132,8 +144,8 @@ $(function(){
 									</label>
 								</div>
 							</div>
-						<button type="button" class="btn btn-danger" value="삭제" style="float: right; margin-left: 10px; width: 80px">삭제</button>
-						<button type="button" class="btn btn-primary" value="수정" style="float: right; width: 80px">수정</button>
+						<button type="button" class="btn btn-danger" value="삭제" id="deleteBtn" style="float: right; margin-left: 10px; width: 80px">삭제</button>
+						<button type="button" class="btn btn-primary" value="수정" id="updateBtn" style="float: right; width: 80px">수정</button>
 						</div>
 						
 						
@@ -156,8 +168,7 @@ $(function(){
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-8 text-center mx-auto">
-							<button type="button" class="btn btn-primary" value="등록" id="regBtn" style="width: 80px; margin-right: 10px;">등록</button>
-							<button type="button" class="btn btn-light" value="취소" id="cancelBtn" style="width: 80px">취소</button>
+							<button type="button" class="btn btn-primary" value="등록" id="regBtn" style="width: 100px; margin-right: 10px;">등록</button>
 						</div>
 					</div>
 				</div>

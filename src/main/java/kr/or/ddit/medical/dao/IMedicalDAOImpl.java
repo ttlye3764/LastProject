@@ -13,7 +13,7 @@ import kr.or.ddit.vo.MypillVO;
 
 @Repository("medicalDAO")
 public class IMedicalDAOImpl implements IMedicalDAO {
-	@Autowired
+	//@Autowired
 	private SqlMapClient client;
 	
 	

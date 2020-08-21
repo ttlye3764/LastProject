@@ -67,11 +67,11 @@
 									)    
     	</insert>
     	
-    	<update id="deleteKnowledge" parameterClass="map">
-    			DELEE 
+    	<delete id="deleteKnowledge" parameterClass="String">
+    			DELETE
     		 	FROM KNOWLEDGE
     		 	WHERE K_NO = #k_no#
-    	</update>
+    	</delete>
     	
     	<update id="updateKnowledge" parameterClass="kVO">
     		UPDATE KNOWLEDGE
