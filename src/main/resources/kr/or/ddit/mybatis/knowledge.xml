@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE sqlMap      
-    PUBLIC "-//ibatis.apache.org//DTD SQL Map  2.0//EN"      
-    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
-    
-    <sqlMap namespace="knowledge">
-    	<typeAlias alias="kVO" type="kr.or.ddit.vo.KnowledgeVO"/>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="knowledge">
     	
-    	<resultMap id="knowledgeResultMap" class="kVO">
+    	<!-- <resultType id="knowledgeResultMap" class="kVO">
     		<result property="k_no" column="k_no"/>
 			<result property="k_title" column="k_title"/>
 			<result property="k_img" column="k_img"/>
@@ -16,20 +13,20 @@
 			<result property="k_answer3" column="k_answer3"/>
 			<result property="k_answer4" column="k_answer4"/>
 			<result property="k_answer" column="k_answer"/>
-			<result property="items"  column="k_no" select="fileitem.fileitemList"/>
-    	</resultMap>
-    	
+			<collection property="items" column="k_no" select="fileitem.fileitemList"></collection>
+    	</resultType>
+    	 -->
     	<sql id="selectAll">
     			SELECT *
     			FROM KNOWLEDGE 
     	</sql>
     	
-    	<select id="knowledgeInfo" parameterClass="map" resultMap="knowledgeResultMap">
+    	<select id="knowledgeInfo" parameterType="map" resultMap="knowledgeResultMap">
     		<include refid="selectAll"/>
     			 AND k_NO = #k_no#
     	</select>
     	
-    	<select id="knowledgeList" resultClass="kVO" parameterClass="map">
+    	<select id="knowledgeList" resultType="kVO" parameterType="map">
    				SELECT B.*
 				FROM(SELECT ROWNUM RNUM, A.*
 					FROM (<include refid="selectAll"/>
@@ -42,8 +39,8 @@
 						
     	</select>
     	
-    	<insert id="insertKnowledge" parameterClass="kVO">
-    		<selectKey keyProperty="k_no" resultClass="String">
+    	<insert id="insertKnowledge" parameterType="kVO">
+    		<selectKey keyProperty="k_no" resultType="String">
     			SELECT KNOWLEDGE_SEQ.NEXTVAL FROM DUAL
     		</selectKey>
     		INSERT INTO KNOWLEDGE(K_NO
@@ -53,8 +50,8 @@
 									,K_ANSWER2
 									,K_ANSWER3
 									,K_ANSWER4
-									,K_IMG
 									,K_ANSWER
+									,MEM_NO
 									)
 							VALUES(#k_no#
 									,#k_title#    
@@ -63,18 +60,18 @@
 									,#k_answer2# 
 									,#k_answer3# 
 									,#k_answer4#
-									,#k_img# 
 									,#k_answer#
+									,1
 									)    
     	</insert>
     	
-    	<delete id="deleteKnowledge" parameterClass="String">
+    	<delete id="deleteKnowledge" parameterType="String">
     			DELETE
     		 	FROM KNOWLEDGE
     		 	WHERE K_NO = #k_no#
     	</delete>
     	
-    	<update id="updateKnowledge" parameterClass="kVO">
+    	<update id="updateKnowledge" parameterType="kVO">
     		UPDATE KNOWLEDGE
     		   SET K_TITLE = #k_title#
     		   	  ,K_CONTENT = #k_content#
@@ -85,8 +82,8 @@
     		WHERE K_NO = #k_no#
     	</update>
     	
-    	<select id="totalCount" parameterClass="map" resultClass="string">
+    	<select id="totalCount" parameterType="map" resultMap="string">
     		SELECT COUNT(K_NO)
     		  FROM KNOWLEDGE
     	</select>
-    </sqlMap>
+</mapper>

@@ -61,7 +61,6 @@ public class KnowledgeController {
 	      String endCount = String.valueOf(pagination.getEndCount());
 	      params.put("startCount", startCount);
 	      params.put("endCount", endCount);
-
 	    
 		List<KnowledgeVO> knowledgeList = this.knowledgeService.knowledgeList(params);
 		
