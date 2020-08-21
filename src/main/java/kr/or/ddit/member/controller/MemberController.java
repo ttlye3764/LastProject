@@ -93,7 +93,7 @@ public class MemberController {
 			  					@RequestBody String totalparams,
 			  					RedirectAttributes redirectAttributes)throws Exception{
 		  System.out.println("@RequestBody :" + totalparams);
-		  //this.service.insertMember(memberInfo);
+		  this.service.insertMember(memberInfo);
 		  
 		  //String message = this.accessor.getMessage("cop.regist.msg.confiem",Locale.KOREA);
 		  //message = URLEncoder.encode(message, "UTF-8");

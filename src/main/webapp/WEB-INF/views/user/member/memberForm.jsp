@@ -101,7 +101,7 @@ td {
 			url : '${pageContext.request.contextPath}/user/mail/mailSending.do',
 			dataType : 'JSON',
 			data : {
-				mem_mail : $('input[name=mem_mail]').val()
+				mem_email : $('input[name=mem_email]').val()
 			},
 			error : function(result) {
 				alert(result.status);
@@ -119,7 +119,7 @@ td {
 			url : '${pageContext.request.contextPath}/user/mail/mailCheck.do',
 			dataType : 'JSON',
 			data : {
-				mem_mail : $('input[name=mem_mail]').val(),
+				mem_email : $('input[name=mem_email]').val(),
 				mail_num : $('input[name=mail_num]').val()
 			},
 			error : function(result) {
@@ -137,6 +137,7 @@ td {
 <body>
 	<form name="memberForm" method="post">
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<input type="hidden" name="mem_division" value="1">
 			<tr>
 				<td class="tLine" colspan="2"></td>
 			</tr>
@@ -150,7 +151,7 @@ td {
 			</tr>
 			<tr>
 				<td class="fieldName" width="100px" height="25">비밀번호</td>
-				<td><input type="text" name="mem_pass" value="" /> 8 ~ 20 자리
+				<td><input type="password" name="mem_pass" value="" /> 8 ~ 20 자리
 					영문자 및 숫자 사용</td>
 			</tr>
 			<tr>
@@ -159,8 +160,17 @@ td {
 
 			<tr>
 				<td class="fieldName" width="100px" height="25">비밀번호확인</td>
-				<td><input type="text" name="mem_pass_confirm" value="" /> 
+				<td><input type="password" name="mem_pass_confirm" value="" /> 
 				<label title="8 ~20 자리 영문자 및 숫자 사용"></label></td>
+			</tr>
+			<tr>
+				<td class="tLine" colspan="2"></td>
+			</tr>
+			<tr>
+				<td class="fieldName" width="100px" height="25">성 별</td>
+				<td><input type="radio" name="mem_gender" value="m">남              
+				<input type="radio" name="mem_gender" value="w">여
+				</td>
 			</tr>
 			<tr>
 				<td class="tLine" colspan="2"></td>
@@ -173,8 +183,15 @@ td {
 				<td class="tLine" colspan="2"></td>
 			</tr>
 			<tr>
+				<td class="fieldName" width="100px" height="25">닉네임</td>
+				<td><input type="text" name="mem_nickname" value="" /></td>
+			</tr>
+			<tr>
+				<td class="tLine" colspan="2"></td>
+			</tr>
+			<tr>
 				<td class="fieldName" width="100px" height="25">생년월일</td>
-				<td><input type="hidden" name="mem_bir" /> <input type="text"
+				<td><input type="hidden" name="mem_birth" /> <input type="text"
 					name="mem_bir1" size="4" value="" />년 <input type="text"
 					name="mem_bir2" size="2" value="" />월 <input type="text"
 					name="mem_bir3" size="2" value="" />일</td>
@@ -184,7 +201,7 @@ td {
 			</tr>
 			<tr>
 				<td class="fieldName" width="100px" height="25">이메일</td>
-				<td><input type="hidden" name="mem_mail" /> <input type="text"
+				<td><input type="hidden" name="mem_email" /> <input type="text"
 					name="mem_mail1" value="" /> @ <select name="mem_mail2">
 						<option value="naver.com">naver.com</option>
 						<option value="daum.net">daum.net</option>
@@ -226,8 +243,8 @@ td {
 					<button
 						class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
 						type="button" onclick="zipcodePopup();">우편번호검색</button> <br>
-					<input type="text" name="mem_add1" id="mem_add1" value="" /> <input
-					type="text" name="mem_add2" id="mem_add2" value="" /></td>
+					<input type="text" name="mem_addr1" id="mem_add1r" value="" /> <input
+					type="text" name="mem_addr2" id="mem_addr2" value="" /></td>
 			</tr>
 			<tr>
 				<td class="tLine" colspan="2"></td>
@@ -259,26 +276,26 @@ td {
 			function() {
 				$(this).attr('action','${pageContext.request.contextPath}/user/member/insertMemberInfo.do');
 
-				var mem_bir = $('input[name=mem_bir1]').val() + '-'
+				var mem_birth = $('input[name=mem_bir1]').val() + '-'
 									+ $('input[name=mem_bir2]').val() + '-'
 									+ $('input[name=mem_bir3]').val();
-							$('input[name=mem_bir]').val(mem_bir);
+							$('input[name=mem_birth]').val(mem_birth);
 
-							var mem_hp = $('select[name=mem_hp1]').val() + '-'
+				var mem_hp = $('select[name=mem_hp1]').val() + '-'
 									+ $('input[name=mem_hp2]').val() + '-'
 									+ $('input[name=mem_hp3]').val();
 							$('input[name=mem_hp]').val(mem_hp);
 
-							var mem_mail = $('input[name=mem_mail1]').val()
+				var mem_email = $('input[name=mem_mail1]').val()
 									+ '@' + $('select[name=mem_mail2]').val();
-							$('input[name=mem_mail]').val(mem_mail);
+							$('input[name=mem_email]').val(mem_email);
 
-							var mem_zip = $('input[name=mem_zip1]').val() + '-'
+				var mem_zip = $('input[name=mem_zip1]').val() + '-'
 									+ $('input[name=mem_zip2]').val();
 							$('input[name=mem_zip]').val(mem_zip);
 
-							return true;
-						});
+					return true;
+				});
 
 		$('#btn3').click(function() {
 			$(location).attr('href','${pageContext.request.contextPath}/user/member/memberList.do');

@@ -32,6 +32,5 @@ public class FirstController implements ApplicationContextAware{
 		System.out.println(System.identityHashCode(m1));
 		System.out.println(System.identityHashCode(m2));
 		System.out.println(System.identityHashCode(m3));
-		System.out.println(m1.getMem_regno1() + " | " + m1.getMem_regno2());
 	}
 }
