@@ -1,7 +1,6 @@
 package kr.or.ddit.message.controller;
 
 
-import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,20 +8,15 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-/**
- * @class ExampleSend
- * @brief This sample code demonstrate how to send sms through CoolSMS Rest API
- *        PHP
- */
 @Controller
 @RequestMapping("/sms/")
 public class MessageController {
 	Map<String,String> inNum = new HashMap<String,String>();
 	
+	@ResponseBody
 	@RequestMapping(value = "sendSms")
 	public String sendSms(HttpServletRequest request) {
 		String api_key = "NCSRBYEVK6QCHVLN"; // 위에서 받은 api key를 추가
@@ -44,7 +38,6 @@ public class MessageController {
 		set.put("to", to); // 발신번호, jsp에서 전송한 수신번호를 받아 map에 저장한다.
 		set.put("text", context); // 문자내용, jsp에서 전송한 문자내용을 받아 map에 저장한다.
 		set.put("type", "sms"); // 문자 타입
-
 
 		JSONObject result = coolsms.send(set); // 보내기&전송결과받기
 		System.out.println(set);

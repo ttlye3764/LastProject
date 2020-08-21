@@ -27,7 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/admin/knowledge/")
+@RequestMapping("/admin/knowledge/") 
 public class KnowledgeController {
 	@Autowired
 	private CryptoGenerator cryptoGen;
@@ -103,19 +103,18 @@ public class KnowledgeController {
 	
 	// 문제 등록
 	@RequestMapping("insertKnowledgeInfo")
-	public String insertKnowledge(KnowledgeVO knowledgeInfo,
-								  @RequestParam("files") MultipartFile[] items)throws Exception{
-		this.knowledgeService.insertKnowledge(knowledgeInfo, items);
+	public String insertKnowledge(KnowledgeVO knowledgeInfo)throws Exception{
+		this.knowledgeService.insertKnowledge(knowledgeInfo);
+		
 		return "redirect:/admin/knowledge/knowledgeList.do";
 	}
 	
 	// 문제 삭제
-	@RequestMapping("deleteKnowledgeInfo/{k_no}")
-	public String deleteKnowledge(@PathVariable("k_no") String k_no,
-								Map<String, String> params) throws Exception{
+	@RequestMapping("deleteKnowledgeInfo")
+	public String deleteKnowledge(String k_no) throws Exception{
 		
-		params.put("k_no", k_no);
-		this.knowledgeService.deleteKnowledge(params);
+		System.out.println(k_no);
+		this.knowledgeService.deleteKnowledge(k_no);
 		
 		return "redirect:/admin/knowledge/knowledgeList.do";
 	}

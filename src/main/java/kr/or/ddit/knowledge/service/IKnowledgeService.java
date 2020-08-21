@@ -12,7 +12,7 @@ public interface IKnowledgeService {
 		public List<KnowledgeVO> knowledgeList(Map<String, String> params) throws Exception;
 		
 		// 문제 등록
-		public String insertKnowledge(KnowledgeVO knowledgeInfo, MultipartFile[] items) throws Exception;
+		public String insertKnowledge(KnowledgeVO knowledgeInfo) throws Exception;
 
 		// 문제 수정
 		public void updateKnowledge(KnowledgeVO knowledgeInfo) throws Exception;
@@ -21,7 +21,7 @@ public interface IKnowledgeService {
 		public KnowledgeVO knowledgeInfo(Map<String, String> params) throws Exception;
 		
 		// 문제 삭제
-		public void deleteKnowledge(Map<String, String> params) throws Exception;
+		public void deleteKnowledge(String k_no) throws Exception;
 		
 		// 페이지
 		public String totalCount(Map<String, String> params) throws Exception;

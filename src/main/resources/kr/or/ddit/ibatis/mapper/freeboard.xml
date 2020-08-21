@@ -158,4 +158,5 @@
     		 WHERE BO_STATUS = 'n'
     		 <include refid="searchCondition"/>
     	</select>
+    	
     </sqlMap>

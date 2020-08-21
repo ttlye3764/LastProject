@@ -38,13 +38,14 @@ public class IKnowledgeServiceImpl implements IKnowledgeService {
 
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
 	@Override
-	public String insertKnowledge(KnowledgeVO knowledgeInfo,
-			MultipartFile[] items) throws Exception {
+	public String insertKnowledge(KnowledgeVO knowledgeInfo) throws Exception {
 
 		String k_no = knowledgeDAO.insertKnowledge(knowledgeInfo);
 
-		List<FileItemVO> fileItemList = AttachFileMapper.mapper(items, k_no);
-		fileitemDAO.insertFileItem(fileItemList);
+		/*
+		 * List<FileItemVO> fileItemList = AttachFileMapper.mapper(items, k_no);
+		 * fileitemDAO.insertFileItem(fileItemList);
+		 */
 
 		return k_no;
 	}
@@ -65,8 +66,8 @@ public class IKnowledgeServiceImpl implements IKnowledgeService {
 
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
 	@Override
-	public void deleteKnowledge(Map<String, String> params) throws Exception {
-		knowledgeDAO.deleteKnowledge(params);
+	public void deleteKnowledge(String k_no) throws Exception {
+		knowledgeDAO.deleteKnowledge(k_no);
 
 	}
 
