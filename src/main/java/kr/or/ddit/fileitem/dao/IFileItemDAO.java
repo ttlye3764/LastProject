@@ -7,5 +7,6 @@ import kr.or.ddit.vo.FileItemVO;
 
 public interface IFileItemDAO {
 	public void insertFileItem(List<FileItemVO> fileitemList) throws Exception;
+	
 	public FileItemVO fileitemInfo(Map<String, String> params) throws Exception;
 }

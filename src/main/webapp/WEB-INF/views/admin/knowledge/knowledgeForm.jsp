@@ -21,7 +21,6 @@
 $(function(){
 	$('form[name=knowledgeForm]').on('submit', function(){	
 	    var k_answer = $('input[name="k_answer"]:checked').val();
-//		$(location).attr('href','${pageContext.request.contextPath}/admin/knowledge/insertKnowledgeInfo.do');
 		
 		 $(this).attr('action','${pageContext.request.contextPath}/admin/knowledge/insertKnowledgeInfo.do?k_answer=' + k_answer);
 	        
@@ -100,8 +99,7 @@ $(function(){
 				<div class="col-md py-2">
 					<div class="card">
 						<div class="card-body">
-							<form name="knowledgeForm" class="form-horizontal" role="form"
-								action="" method="post" enctype="multipart/form-data">
+							<form name="knowledgeForm" class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
 								<h4 class="mb-2">
 									<input type="text" size="30px" id="k_title" name="k_title">
 								</h4>
@@ -112,7 +110,7 @@ $(function(){
 							<div id="image_container"></div>
 
 							<div class="list-group-number list-unstyled list-group-borderless">
-								
+								      
 								<div class="custom-control custom-radio" style="padding: 10px">
 									<input type="radio" id="customRadio1" name="k_answer" value="k_answer1" class="custom-control-input">
 									<label class="custom-control-label" for="customRadio1"><span>01</span>
@@ -140,13 +138,11 @@ $(function(){
 								</div>
 								
 							</div>
-								<!-- <form name="img">
 									<div class="form-group">
 										<label for="exampleFormControlFile1"></label>
 										<input type="file" class="form-control-file" name="files"
-										  id="exampleFormControlFile1" onchange="setThumbnail(event);" multiple="multiple"/>
+										  id="exampleFormControlFile1" onchange="setThumbnail(event);"/>
 									</div>
-								</form> -->
 						</div>
 					</div>
 				</div>
@@ -166,7 +162,6 @@ $(function(){
 				</div>
 			</form>
 			</section>
-			
 			
 		</div>
 	</div>

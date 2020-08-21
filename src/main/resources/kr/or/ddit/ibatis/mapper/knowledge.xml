@@ -16,6 +16,7 @@
 			<result property="k_answer3" column="k_answer3"/>
 			<result property="k_answer4" column="k_answer4"/>
 			<result property="k_answer" column="k_answer"/>
+			<result property="items"  column="k_no" select="fileitem.fileitemList"/>
     	</resultMap>
     	
     	<sql id="selectAll">
