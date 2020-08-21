@@ -11,4 +11,5 @@ public interface IMemberDAO {
 	public void deleteMemberInfo(Map<String, String> params) throws Exception;
 	public void updateMemberInfo(MemberVO memberInfo) throws Exception;
 	public void insertMember (MemberVO memberVO) throws Exception;
+	public String selectSeq() throws Exception;
 }

@@ -9,11 +9,13 @@
 
 	<typeAliases>
 		<typeAlias alias="freeboardVO" type="kr.or.ddit.vo.FreeboardVO" />
+		<typeAlias alias="memberVO" type="kr.or.ddit.vo.MemberVO" />
 	</typeAliases>
 
 	<!-- 매퍼에는 얼리어스 줄수없 -->
 
 	<mappers>
 		<mapper resource="kr/or/ddit/mybatis/freeboard.xml" />
+		<mapper resource="kr/or/ddit/mybatis/member.xml" />
 	</mappers>
 </configuration>

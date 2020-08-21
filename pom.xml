@@ -271,7 +271,7 @@
 			<groupId>org.apache.ibatis</groupId>
 			<artifactId>ibatis-sqlmap</artifactId>
 			<version>${ibatis.sqlmap-version}</version>
-		</dependency>
+		</dependency> 
 		<!--myBatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
