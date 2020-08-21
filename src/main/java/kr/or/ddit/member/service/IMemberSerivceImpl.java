@@ -47,6 +47,12 @@ public class IMemberSerivceImpl implements IMemberService {
 			dao.insertMember(memberVO);
 		
 	}
+
+	@Override
+	public String selectSeq() throws Exception {
+		String mem_no = dao.selectSeq();
+		return mem_no;
+	}
 	
 	
 

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE sqlMap     
-    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
-    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
-<sqlMap namespace="member">
-	<typeAlias alias="memberVO" type="kr.or.ddit.vo.MemberVO" />
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
 
 	<sql id="selectAll">
 		SELECT *
@@ -73,17 +71,19 @@
 <!-- 	</update> -->
 
 
-	<insert id="insertMember" parameterClass="memberVO">
-		INSERT INTO MEMBER(
-		mem_no,mem_id,mem_pass,mem_name,mem_gender,mem_nickname,mem_birth,mem_email,mem_hp,mem_addr1,mem_addr2,mem_division,mem_zip1,mem_zip2
-		)
+	<insert id="insertMember" parameterType="memberVO">
+		INSERT INTO MEMBER(MEM_NO,MEM_ID,MEM_PASS,MEM_NAME,MEM_GENDER,MEM_NICKNAME,MEM_BIRTH,MEM_EMAIL,MEM_HP,MEM_ADDR1,MEM_ADDR2,MEM_DIVISION,MEM_ZIP1,MEM_ZIP2)
 		values(
-		MEMBER_SEQ.NEXTVAL,#mem_id#,#mem_pass#,#mem_name#,#mem_gender#,#mem_nickname#,
-		#mem_birth#,#mem_email#,#mem_hp#,#mem_addr1#,#mem_addr2#,#mem_division#,#mem_zip1#,#mem_zip2#
+		member_seq.nextval,#{mem_id},#{mem_pass},#{mem_name},#{mem_gender},#{mem_nickname},
+		#{mem_birth},#{mem_email},#{mem_hp},#{mem_addr1},#{mem_addr2},#{mem_division},#{mem_zip1},#{mem_zip2}
 		)
 	</insert>
+	
+	<select id="selectSeq" resultType="String">
+		SELECT MEMBER_SEQ.NEXTVAL FROM DUAL
+	</select>
 
-</sqlMap>    
+</mapper>    
 
 
 

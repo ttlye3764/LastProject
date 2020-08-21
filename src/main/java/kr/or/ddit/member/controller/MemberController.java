@@ -91,9 +91,22 @@ public class MemberController {
 	  @RequestMapping("insertMemberInfo")
 	  public String insertMember(MemberVO memberInfo,
 			  					@RequestBody String totalparams,
-			  					RedirectAttributes redirectAttributes)throws Exception{
-		  System.out.println("@RequestBody :" + totalparams);
-		  //this.service.insertMember(memberInfo);
+			  					RedirectAttributes redirectAttributes)throws Exception{		  
+		 
+		  System.out.println(memberInfo.getMem_id());
+		  System.out.println(memberInfo.getMem_pass());
+		  System.out.println(memberInfo.getMem_gender());
+		  System.out.println(memberInfo.getMem_name());
+		  System.out.println(memberInfo.getMem_nickname());
+		  System.out.println(memberInfo.getMem_birth());
+		  System.out.println(memberInfo.getMem_hp());
+		  System.out.println(memberInfo.getMem_email());
+		  System.out.println(memberInfo.getMem_addr1());
+		  System.out.println(memberInfo.getMem_addr2());
+		  System.out.println(memberInfo.getMem_zip1());
+		  System.out.println(memberInfo.getMem_zip2());
+		  System.out.println(memberInfo.getMem_division());
+		  this.service.insertMember(memberInfo);
 		  
 		  //String message = this.accessor.getMessage("cop.regist.msg.confiem",Locale.KOREA);
 		  //message = URLEncoder.encode(message, "UTF-8");

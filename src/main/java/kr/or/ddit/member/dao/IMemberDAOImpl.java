@@ -3,10 +3,10 @@ package kr.or.ddit.member.dao;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import javax.annotation.Resource;
 
-import com.ibatis.sqlmap.client.SqlMapClient;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.stereotype.Repository;
 
 import kr.or.ddit.vo.MemberVO;
 
@@ -17,17 +17,18 @@ public class IMemberDAOImpl implements IMemberDAO {
 	//@Resource
 	//@Inject
 	//@Autowired
-	private SqlMapClient client;
+	@Resource
+	private SqlSessionTemplate client;
 	
 		
 	@Override
 	public MemberVO memberInfo(Map<String, String> params) throws Exception {
-		return (MemberVO) client.queryForObject("member.memberInfo", params);
+		return (MemberVO) client.selectOne("member.memberInfo", params);
 	}
 	
 	@Override
 	public List<MemberVO> memberList(Map<String, String> params) throws Exception {
-		return client.queryForList("member.memberList", params);
+		return client.selectList("member.memberList", params);
 	}
 
 	@Override
@@ -51,6 +52,12 @@ public class IMemberDAOImpl implements IMemberDAO {
 	public void insertMember(MemberVO memberVO) throws Exception {
 		client.insert("member.insertMember", memberVO);
 		
+	}
+
+	@Override
+	public String selectSeq() throws Exception {
+		String mem_no = client.selectOne("member.selectSeq");
+		return mem_no;
 	}
 	
 	
