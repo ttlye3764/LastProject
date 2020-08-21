@@ -22,10 +22,8 @@ public class IFileItemServiceImpl implements IFileItemService {
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor={Exception.class})
 	@Override
 	public void insertFileItem(List<FileItemVO> fileitemList)throws Exception {
-		// TODO Auto-generated method stub
 
 	}
-	
 	
 	@Transactional(propagation=Propagation.REQUIRED, readOnly=true)
 	@Override

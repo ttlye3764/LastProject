@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자유게시글 등록</title>
+<title>지식관리</title>
 	<script src="${pageContext.request.contextPath }/resources/template/assets/vendor/jquery/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/template/assets/vendor/popper.js/umd/popper.min.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/template/assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -104,9 +104,20 @@ $(function(){
 								${knowledgeInfo.k_content }
 							</div>
 							
-							<%-- <div id="image_container">
-								<img src="/files/${knowledgeInfo.k_img }" alt="pic1" width="250"/>
-							</div> --%>
+							<!-- 파일  -->
+							<!-- <div id="image_container">
+								<img src="" alt="pic1" width="250"/>
+							</div>  -->
+							
+							<%-- <c:if test="${!empty knowledgeInfo.items }">  --%>
+							<div id="image_container" style="width: 300px; height: 200px;">
+								<c:forEach items="${knowledgeInfo.items }" var="fileitemInfo">
+									<img src="/files/${fileitemInfo.file_save_name }" alt="pic1">
+								</c:forEach>
+							</div>
+							<%-- </c:if>  --%>
+							${fileitemInfo.file_save_name }
+							
 
 							<div class="list-group-number list-unstyled list-group-borderless">
 								
