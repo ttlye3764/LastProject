@@ -12,7 +12,7 @@ public interface IKnowledgeService {
 		public List<KnowledgeVO> knowledgeList(Map<String, String> params) throws Exception;
 		
 		// 문제 등록
-		public String insertKnowledge(KnowledgeVO knowledgeInfo) throws Exception;
+		public String insertKnowledge(KnowledgeVO knowledgeInfo, MultipartFile[] items) throws Exception;
 
 		// 문제 수정
 		public void updateKnowledge(KnowledgeVO knowledgeInfo) throws Exception;
