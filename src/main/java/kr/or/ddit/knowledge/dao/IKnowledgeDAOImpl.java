@@ -12,7 +12,7 @@ import kr.or.ddit.vo.KnowledgeVO;
 
 @Repository("knowledgeDAO")
 public class IKnowledgeDAOImpl implements IKnowledgeDAO {
-	@Autowired
+	//@Autowired
 	private SqlMapClient client;
 	
 

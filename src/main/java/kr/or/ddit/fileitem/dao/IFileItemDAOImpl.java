@@ -12,7 +12,7 @@ import kr.or.ddit.vo.FileItemVO;
 
 @Repository
 public class IFileItemDAOImpl implements IFileItemDAO {
-	@Autowired
+	//@Autowired
 	private SqlMapClient client;
 	
 	
